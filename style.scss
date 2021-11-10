@@ -1,0 +1,31 @@
+p, li, ul, code, a {
+    font-size: 1.1rem;
+}
+h1 {
+    font-size: 2.2rem;
+}
+h2 {
+    font-size: 2rem;
+}
+code {
+    color: white;
+}
+code.black {
+    background-color: black;
+}
+.url {
+    color: #0058fc;
+    background-color: lightgray;
+}
+.codeBox {
+    background-color: black;
+}
+.indent {
+    color: black;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

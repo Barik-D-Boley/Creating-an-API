@@ -1,33 +1,23 @@
 const express = require('express')
 const app = express()
+const path = require('path')
 const { menu } = require('./data')
+
+// CSS
+app.get('/style.css', (req, res) => {
+    res.status(200).sendFile(path.join(__dirname + '/style.css'))
+})
 
 // Homepage
 app.get('/', (req, res) => {
-    res.send(`
-        <h1>Home Page</h1>
-        <ul>
-            <li><a target='_blank' href='/api/menu' >Full Menu</a></li>
-            <li><a target='_blank' href='/api/menu/breakfast'>Breakfast Menu</a></li>
-            <li><a target='_blank' href='/api/menu/lunch'>Lunch Menu</a></li>
-            <li><a target='_blank' href='/api/menu/dinner'>Dinner Menu</a></li>
-            <li><a target='_blank' href='/api/menu/starters'>Starter Menu</a></li>
-            <li><a target='_blank' href='/api/menu/sides'>Sides Menu</a></li>
-            <li><a target='_blank' href='/api/menu/desserts'>Dessert Menu</a></li>
-            <li><a target='_blank' href='/api/menu/beverages'>Beverage Menu</a></li>
-            <li><a target='_blank' href='/api/menu/toGoFave'>To go Favorites Menu</a></li>
-            <li><a target='_blank' href='/api/menu/glutenFree'>Gluten Free Menu</a></li>
-            <li><a target='_blank' href='/api/menu/69'>Specific Menu Item</a></li>
-            <li><a target='_blank' href='/api/menu/v1/query?search=bacon&maxPrice=10&minCal=800&limit=2'>Query Search</a></li>
-        </ul>
-    `)
+    res.status(200).sendFile(path.join(__dirname + '/homepage.html'))
 })
 
 // All menu items
 app.get('/api/menu', (req, res) => {
     const newProducts = menu.map((item) => {
-        const { id, toGoFave, glutenFree, category, name, price, calories, description} = item
-        return { id, toGoFave, glutenFree, category, name, price, calories, description}
+        const { id, toGoFave, glutenFree, itemType, category, name, price, calories, description } = item
+        return { id, toGoFave, glutenFree, itemType, category, name, price, calories, description }
     })
 
     res.json(newProducts);  
@@ -35,10 +25,10 @@ app.get('/api/menu', (req, res) => {
 
 // All breakfast items
 app.get('/api/menu/breakfast', (req, res) => {
-    let items = menu.filter(item => item.category == 'Breakfast');
+    let items = menu.filter(item => item.itemType == 'Breakfast');
     const newProducts = items.map((item) => {
-        const { id, toGoFave, glutenFree, category, name, price, calories, description } = item
-        return { id, toGoFave, glutenFree, category, name, price, calories, description }
+        const { id, toGoFave, glutenFree, itemType, category, name, price, calories, description } = item
+        return { id, toGoFave, glutenFree, itemType, category, name, price, calories, description }
     })
 
     res.json(newProducts);  
@@ -46,10 +36,10 @@ app.get('/api/menu/breakfast', (req, res) => {
 
 // All lunch items
 app.get('/api/menu/lunch', (req, res) => {
-    let items = menu.filter(item => item.category == 'Lunch');
+    let items = menu.filter(item => item.itemType == 'Lunch');
     const newProducts = items.map((item) => {
-        const { id, toGoFave, glutenFree, category, name, price, calories, description } = item
-        return { id, toGoFave, glutenFree, category, name, price, calories, description }
+        const { id, toGoFave, glutenFree, itemType, category, name, price, calories, description } = item
+        return { id, toGoFave, glutenFree, itemType, category, name, price, calories, description }
     })
 
     res.json(newProducts);  
@@ -57,10 +47,10 @@ app.get('/api/menu/lunch', (req, res) => {
 
 // All dinner items
 app.get('/api/menu/dinner', (req, res) => {
-    let items = menu.filter(item => item.category == 'Dinner');
+    let items = menu.filter(item => item.itemType == 'Dinner');
     const newProducts = items.map((item) => {
-        const { id, toGoFave, glutenFree, category, name, price, calories, description } = item
-        return { id, toGoFave, glutenFree, category, name, price, calories, description }
+        const { id, toGoFave, glutenFree, itemType, category, name, price, calories, description } = item
+        return { id, toGoFave, glutenFree, itemType, category, name, price, calories, description }
     })
 
     res.json(newProducts);  
@@ -68,10 +58,10 @@ app.get('/api/menu/dinner', (req, res) => {
 
 // All starters
 app.get('/api/menu/starters', (req, res) => {
-    let items = menu.filter(item => item.category == 'Starter');
+    let items = menu.filter(item => item.itemType == 'Starter');
     const newProducts = items.map((item) => {
-        const { id, toGoFave, glutenFree, category, name, price, calories, description } = item
-        return { id, toGoFave, glutenFree, category, name, price, calories, description }
+        const { id, toGoFave, glutenFree, itemType, category, name, price, calories, description } = item
+        return { id, toGoFave, glutenFree, itemType, category, name, price, calories, description }
     })
 
     res.json(newProducts);  
@@ -79,10 +69,10 @@ app.get('/api/menu/starters', (req, res) => {
 
 // All sides
 app.get('/api/menu/sides', (req, res) => {
-    let items = menu.filter(item => item.category == 'Side');
+    let items = menu.filter(item => item.itemType == 'Side');
     const newProducts = items.map((item) => {
-        const { id, toGoFave, glutenFree, category, name, price, calories, description } = item
-        return { id, toGoFave, glutenFree, category, name, price, calories, description }
+        const { id, toGoFave, glutenFree, itemType, category, name, price, calories, description } = item
+        return { id, toGoFave, glutenFree, itemType, category, name, price, calories, description }
     })
 
     res.json(newProducts);  
@@ -90,10 +80,10 @@ app.get('/api/menu/sides', (req, res) => {
 
 // All desserts
 app.get('/api/menu/desserts', (req, res) => {
-    let items = menu.filter(item => item.category == 'Dessert');
+    let items = menu.filter(item => item.itemType == 'Dessert');
     const newProducts = items.map((item) => {
-        const { id, toGoFave, glutenFree, category, name, price, calories, description } = item
-        return { id, toGoFave, glutenFree, category, name, price, calories, description }
+        const { id, toGoFave, glutenFree, itemType, category, name, price, calories, description } = item
+        return { id, toGoFave, glutenFree, itemType, category, name, price, calories, description }
     })
 
     res.json(newProducts);  
@@ -101,10 +91,10 @@ app.get('/api/menu/desserts', (req, res) => {
 
 // All beverages
 app.get('/api/menu/beverages', (req, res) => {
-    let items = menu.filter(item => item.category == 'Beverage');
+    let items = menu.filter(item => item.itemType == 'Beverage');
     const newProducts = items.map((item) => {
-        const { id, toGoFave, glutenFree, category, name, price, calories, description } = item
-        return { id, toGoFave, glutenFree, category, name, price, calories, description }
+        const { id, toGoFave, glutenFree, itemType, category, name, price, calories, description } = item
+        return { id, toGoFave, glutenFree, itemType, category, name, price, calories, description }
     })
 
     res.json(newProducts);  
@@ -114,8 +104,8 @@ app.get('/api/menu/beverages', (req, res) => {
 app.get('/api/menu/toGoFave', (req, res) => {
     let items = menu.filter(item => item.toGoFave === true);
     const newProducts = items.map((item) => {
-        const { id, toGoFave, glutenFree, category, name, price, calories, description } = item
-        return { id, toGoFave, glutenFree, category, name, price, calories, description }
+        const { id, toGoFave, glutenFree, itemType, category, name, price, calories, description } = item
+        return { id, toGoFave, glutenFree, itemType, category, name, price, calories, description }
     })
 
     res.json(newProducts);  
@@ -125,12 +115,26 @@ app.get('/api/menu/toGoFave', (req, res) => {
 app.get('/api/menu/glutenFree', (req, res) => {
     let items = menu.filter(item => item.glutenFree === true);
     const newProducts = items.map((item) => {
-        const { id, toGoFave, glutenFree, category, name, price, calories, description } = item
-        return { id, toGoFave, glutenFree, category, name, price, calories, description }
+        const { id, toGoFave, glutenFree, itemType, category, name, price, calories, description } = item
+        return { id, toGoFave, glutenFree, itemType, category, name, price, calories, description }
     })
 
     res.json(newProducts);  
 })
+
+// Returns items by category
+app.get('/api/menu/category/:category', (req, res) => {
+    const { category } = req.params;
+
+    let items = menu.filter(item => item.category.toLowerCase() == category);
+    const newProducts = items.map((item) => {
+        const { id, toGoFave, glutenFree, itemType, category, name, price, calories, description } = item
+        return { id, toGoFave, glutenFree, itemType, category, name, price, calories, description }
+    })
+
+    res.json(newProducts); 
+})
+
 
 // Searches menu by item id
 app.get('/api/menu/:menuID', (req, res) => {
@@ -167,7 +171,7 @@ app.get('/api/menu/v1/query', (req, res) => {
             return item.calories[0] >= minCal;
         })
     }
-    // Returns
+    // Returns if the calorie count is less than the maxCal
     if (maxCal) {
         sortedMenu = sortedMenu.filter((item) => {
             if (item.calories.length == 1) {
@@ -177,6 +181,7 @@ app.get('/api/menu/v1/query', (req, res) => {
             }
         })
     }
+    // Returns if the price is at least the minPrice
     if (minPrice) {
         sortedMenu = sortedMenu.filter((item) => {
             if (!isNaN(item.price)) {
@@ -184,14 +189,17 @@ app.get('/api/menu/v1/query', (req, res) => {
             }
         })
     }
+    // Returns if the price is less than the maxPrice
     if (maxPrice) {
         sortedMenu = sortedMenu.filter((item) => {
             return item.price <= maxPrice;
         })
     }
+    // Limits the amount of objects that can be returned
     if (limit) {
         sortedMenu = sortedMenu.slice(0, Number(limit))
     }
+    // Returns if there are no objects to display
     if (sortedMenu.length < 1) {
         res.status(200).send('No products matched your search');
         // return res.status(200).json({ success: true, data: [] })
