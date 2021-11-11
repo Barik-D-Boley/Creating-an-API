@@ -11,23 +11,23 @@
     <h1>Home Page</h1>
     <a target='_blank' href='https://github.com/xBarikadex/Creating-an-API'>View the project on Github</a>
     <ul>
-        <li><a target='_blank' href='/api/menu'>Full Menu</a> or add <span class='url'>/api/menu</span> onto the end of the url</li>
+        <li><a target='_blank' href='/api/menu'>Full Menu</a> or add <span class='url' onclick='copy("/api/menu")' title='Copy to Clipboard'>/api/menu</span> onto the end of the url</li>
         <p></p>
-        <li><a target='_blank' href='/api/menu/breakfast'>Breakfast Menu</a> or add <span class='url'>/api/menu/breakfast</span> onto the end of the url</li>
-        <li><a target='_blank' href='/api/menu/lunch'>Lunch Menu</a> or add <span class='url'>/api/menu/lunch</span> onto the end of the url</li>
-        <li><a target='_blank' href='/api/menu/dinner'>Dinner Menu</a> or add <span class='url'>/api/menu/dinner</span> onto the end of the url</li>
+        <li><a target='_blank' href='/api/menu/breakfast'>Breakfast Menu</a> or add <span class='url' onclick='copy("/api/menu/breakfast")' copy("/api/menu")' title='Copy to Clipboard'>/api/menu/breakfast</span> onto the end of the url</li>
+        <li><a target='_blank' href='/api/menu/lunch'>Lunch Menu</a> or add <span class='url' onclick='copy("/api/menu/lunch")' copy("/api/menu")' title='Copy to Clipboard'>/api/menu/lunch</span> onto the end of the url</li>
+        <li><a target='_blank' href='/api/menu/dinner'>Dinner Menu</a> or add <span class='url' onclick='copy("/api/menu/dinner")' title='Copy to Clipboard'>/api/menu/dinner</span> onto the end of the url</li>
         <p></p>
-        <li><a target='_blank' href='/api/menu/starters'>Starter Menu</a> or add <span class='url'>/api/menu/starters</span> onto the end of the url</li>
-        <li><a target='_blank' href='/api/menu/sides'>Sides Menu</a> or add <span class='url'>/api/menu/sides</span> onto the end of the url</li>
-        <li><a target='_blank' href='/api/menu/desserts'>Dessert Menu</a> or add <span class='url'>/api/menu/desserts</span> onto the end of the url</li>
-        <li><a target='_blank' href='/api/menu/beverages'>Beverage Menu</a> or add <span class='url'>/api/menu/beverages</span> onto the end of the url</li>
+        <li><a target='_blank' href='/api/menu/starters'>Starter Menu</a> or add <span class='url' onclick='copy("/api/menu/starters")' title='Copy to Clipboard'>/api/menu/starters</span> onto the end of the url</li>
+        <li><a target='_blank' href='/api/menu/sides'>Sides Menu</a> or add <span class='url' onclick='copy("/api/menu/sides")' title='Copy to Clipboard'>/api/menu/sides</span> onto the end of the url</li>
+        <li><a target='_blank' href='/api/menu/desserts'>Dessert Menu</a> or add <span class='url' onclick='copy("/api/menu/desserts")' title='Copy to Clipboard'>/api/menu/desserts</span> onto the end of the url</li>
+        <li><a target='_blank' href='/api/menu/beverages'>Beverage Menu</a> or add <span class='url' onclick='copy("/api/menu/beverages")' title='Copy to Clipboard'>/api/menu/beverages</span> onto the end of the url</li>
         <p></p>
-        <li><a target='_blank' href='/api/menu/toGoFave'>To go Favorites Menu</a> or add <span class='url'>/api/menu/toGoFave</span> onto the end of the url</li>
-        <li><a target='_blank' href='/api/menu/glutenFree'>Gluten Free Menu</a> or add <span class='url'>/api/menu/glutenFree</span> onto the end of the url</li>
+        <li><a target='_blank' href='/api/menu/toGoFave'>To go Favorites Menu</a> or add <span class='url' onclick='copy("/api/menu/toGoFave")' title='Copy to Clipboard'>/api/menu/toGoFave</span> onto the end of the url</li>
+        <li><a target='_blank' href='/api/menu/glutenFree'>Gluten Free Menu</a> or add <span class='url' onclick='copy("/api/menu/glutenFree")' title='Copy to Clipboard'>/api/menu/glutenFree</span> onto the end of the url</li>
         <p></p>
-        <li><a target='_blank' href='/api/menu/category/sides'>Search by Category</a> or add <span class='url'>/api/menu/category/*any category name*</span> onto the end of the url</li>
-        <li><a target='_blank' href='/api/menu/69'>Specific Menu Item</a> or add <span class='url'>/api/menu/*item id*</span> onto the end of the url</li>
-        <li><a target='_blank' href='/api/menu/v1/query?search=bacon&maxPrice=10&minCal=800&limit=2'>Query Search</a> or add <span class='url'>/api/menu/v1/query?</span> with any combination of these parameters with an "&" in between each: 
+        <li><a target='_blank' href='/api/menu/category/sides'>Search by Category</a> or add <span class='url' onclick='copy("/api/menu/category/")' title='Copy to Clipboard'>/api/menu/category/*any category name*</span> onto the end of the url</li>
+        <li><a target='_blank' href='/api/menu/69'>Specific Menu Item</a> or add <span class='url' onclick='copy("/api/menu/")' title='Copy to Clipboard'>/api/menu/*item id*</span> onto the end of the url</li>
+        <li><a target='_blank' href='/api/menu/v1/query?search=bacon&maxPrice=10&minCal=800&limit=2'>Query Search</a> or add <span class='url' onclick='copy("/api/menu/v1/query?")' title='Copy to Clipboard'>/api/menu/v1/query?</span> with any combination of these parameters with an "&" in between each: 
             <ul>
                 <li>search=*word*</li>
                 <li>limit=*num*</li>
@@ -50,7 +50,7 @@
             // Change './data' to whatever the file path is to your data.js file<br>
             // For example, if the data.js file is in a folder called 'util', type './util/data' into the require statement<br><br>
 
-            // All menu items<br>
+            // Returns all items in the object<br>
             app.get('/name', (req, res) => {<br>
             <span class='indent'>----</span>const newProducts = menu.map((item) => {<br>
             <span class='indent'>--------</span>const { id, toGoFave, glutenFree, itemType, category, name, price, calories, description } = item<br>
@@ -61,10 +61,28 @@
             <span class='indent'>----</span>res.json(newProducts);<br>
             })<br><br>
 
+            // Returns all items in the category (specified by the variable inputted into the url)<br>
+            app.get('/api/menu/category/:category', (req, res) => {<br>
+            <span class='indent'>----</span>const { category } = req.params;<br>
+            <span class='indent'>----</span>let items = menu.filter(item => item.category.toLowerCase() == category);<br>
+            <span class='indent'>----</span>const newProducts = items.map((item) => {<br>
+            <span class='indent'>--------</span>const { id, toGoFave, glutenFree, itemType, category, name, price, calories, description } = item<br>
+            <span class='indent'>--------</span>return { id, toGoFave, glutenFree, itemType, category, name, price, calories, description }<br>
+            <span class='indent'>----</span>})<br><br>
+            
+            <span class='indent'>----</span>res.json(newProducts);<br>
+            })<br><br>
+
             app.listen(5000, () => {<br>
             <span class='indent'>----</span>console.log('Server is listening on port 5000....');<br>
             })<br>
         </code>
     </div>
+    <script>
+        function copy(text) {
+            navigator.clipboard.writeText(text);
+            alert(`Copied "${text}" to your clipboard`);
+        }
+    </script>
 </body>
 </html>

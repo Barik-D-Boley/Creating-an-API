@@ -1,5 +1,16 @@
+@font-face {
+    font-family: Oswald;
+    src: url('./Oswald.ttf');
+} 
+
+body {
+    margin: 2rem 4rem;
+}
 p, li, ul, code, a {
     font-size: 1.1rem;
+}
+* :not(code, span) {
+    font-family: Oswald;
 }
 h1 {
     font-size: 2.2rem;
@@ -13,12 +24,25 @@ code {
 code.black {
     background-color: black;
 }
+a {
+    color: gray;
+    text-decoration: none;
+    &:hover {
+        color: lightgray;
+    }
+}
 .url {
     color: #0058fc;
     background-color: lightgray;
+    &:hover {
+        color: #6299ff;
+        cursor: pointer;
+    }
 }
 .codeBox {
     background-color: black;
+    padding: 1rem;
+    border-radius: .3rem;
 }
 .indent {
     color: black;

@@ -8,6 +8,11 @@ app.get('/style.css', (req, res) => {
     res.status(200).sendFile(path.join(__dirname + '/style.css'))
 })
 
+// Fonts
+app.get('/Oswald.ttf', (req, res) => {
+    res.status(200).sendFile(path.join(__dirname + '/Oswald.ttf'))
+})
+
 // Homepage
 app.get('/', (req, res) => {
     res.status(200).sendFile(path.join(__dirname + '/homepage.html'))
