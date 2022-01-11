@@ -212,6 +212,6 @@ app.get('/api/menu/v1/query', (req, res) => {
     res.status(200).json(sortedMenu)
 })
 
-app.listen(5000, () => {
-    console.log('Server is listening on port 5000....');
+app.listen(5001, () => {
+    console.log('Server is listening on port 5001....');
 })
