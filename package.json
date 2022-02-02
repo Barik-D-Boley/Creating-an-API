@@ -22,6 +22,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "heroku": "^7.59.2",
+    "heroku-builds": "^0.0.29",
     "nodemon": "^2.0.15"
   }
 }
