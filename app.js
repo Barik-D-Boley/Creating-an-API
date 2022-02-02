@@ -3,6 +3,8 @@ const app = express()
 const path = require('path')
 const { menu } = require('./data')
 
+const port = process.env.PORT || 5000;
+
 // CSS
 app.get('/style.css', (req, res) => {
     res.status(200).sendFile(path.join(__dirname + '/style.css'))
@@ -212,6 +214,6 @@ app.get('/api/menu/v1/query', (req, res) => {
     res.status(200).json(sortedMenu)
 })
 
-app.listen(5001, () => {
+app.listen(port, () => {
     console.log('Server is listening on port 5001....');
 })
